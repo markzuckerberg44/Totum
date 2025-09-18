@@ -1,6 +1,8 @@
 <div class="min-h-screen bg-[#12191D] text-white">
   <header class="bg-[#12191D] p-6 flex items-center relative">
-    <img src="./assets/totumlogo.png" class="w-28 h-11" alt="Totum" />
+    
+    <img src="./assets/totumlogo.png" class="w-28 h-11" alt="Totum" onclick="navigateTo('welcome')"/>
+    
         <button id="menuBtn" type="button"
             class="ml-auto flex flex-col gap-1.5 cursor-pointer relative z-50"
             aria-controls="menu" aria-expanded="false">
@@ -39,53 +41,25 @@
     <div class="flex justify-center items-center py-8">
         <div class="w-[90%] rounded overflow-hidden shadow-lg">
             <div class="px-6 py-4 bg-[#1E1E1E] border-2 border-[#444444]">
-                <div class="font-bold text-xl mb-10">Clima aqui</div>
-                <p class="text-white opacity-70 text-base">Clima</p>
-                <p class="text-white opacity-40 text-base">
-                La Serena, Chile.
-                </p>
+
+                <div class="flex items-center justify-between mb-4">
+                    <div class="font-bold text-xl mb-10 mt-2" id="clima-temperatura"></div>
+                    <div id="clima-icon" class="w-20 h-20"></div>
+                </div>
+
+                <div class="flex">
+                    <div>
+                        <p class="text-white opacity-70 text-base" id="clima-descripcion"></p>
+                        <p class="text-white opacity-40 text-base" id="clima-ubicacion">
+                        La Serena, Chile.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="flex justify-center items-center py-4">
-        <div class="w-[90%] rounded overflow-hidden shadow-lg">
-            <div class="px-6 py-4 bg-[#1E1E1E] border-2 border-[#444444]">
-                <div class="font-bold text-xl mb-2">Recetas</div>
-                <p class="text-white opacity-70 text-base">Clima</p>
-                <p class="text-white opacity-40 text-base">
-                La Serena, Chile.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="flex justify-center items-center py-4">
-        <div class="w-[90%] rounded overflow-hidden shadow-lg">
-            <div class="px-6 py-4 bg-[#1E1E1E] border-2 border-[#444444]">
-                <div class="font-bold text-xl mb-2">3ra API</div>
-                <p class="text-white opacity-70 text-base">Clima</p>
-                <p class="text-white opacity-40 text-base">
-                La Serena, Chile.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="flex justify-center items-center py-4">
-        <div class="w-[90%] rounded overflow-hidden shadow-lg">
-            <div class="px-6 py-4 bg-[#1E1E1E] border-2 border-[#444444]">
-                <div class="font-bold text-xl mb-2">4ta API</div>
-                <p class="text-white opacity-70 text-base">Clima</p>
-                <p class="text-white opacity-40 text-base">
-                La Serena, Chile.
-                </p>
-            </div>
-        </div>
-    </div>
-
-
-
+    
 </div>
     
 

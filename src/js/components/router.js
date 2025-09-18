@@ -48,8 +48,16 @@ class Router {
         if (window.AppUtils && window.AppUtils.initHamburgerMenu) {
           window.AppUtils.initHamburgerMenu();
         }
+        
+        // ✨ EJECUTAR LA FUNCIÓN DEL CLIMA
+        if (typeof window.cargarYMostrarClima === 'function') {
+          console.log('🌤️ Ejecutando función del clima...');
+          window.cargarYMostrarClima();
+        } else {
+          console.log('❌ Función cargarYMostrarClima no encontrada');
+        }
       }
-    }, 50);
+    }, 200);
   }
 
   // Inicializar el router

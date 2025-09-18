@@ -1,6 +1,6 @@
 // Archivo principal de la aplicación
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('🚀 TOTUM App iniciada');
+  console.log('TOTUM App iniciada');
   
   // Inicializar el router
   if (window.router) {
@@ -112,9 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
         
-        console.log('✅ Menú hamburguesa inicializado con cierre automático');
+        console.log('Menú hamburguesa inicializado con cierre automático');
       } else {
-        console.log('❌ Elementos del menú no encontrados');
+        console.log('Elementos del menú no encontrados');
       }
     }
   };
@@ -140,5 +140,5 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.classList.add('dark');
   }
 
-  console.log(`📱 ${appConfig.name} v${appConfig.version} cargado correctamente`);
+  console.log(`${appConfig.name} v${appConfig.version} cargado correctamente`);
 });
