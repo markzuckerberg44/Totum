@@ -68,8 +68,8 @@ function actualizarCartaClima(data) {
     }
 
     console.log('Carta de clima actualizada completamente');
-}
 
+}
 async function cargarYMostrarClima() {
     console.log('Iniciando carga del clima...');
 
@@ -82,8 +82,6 @@ async function cargarYMostrarClima() {
         console.log('Error: No se pudieron obtener datos del clima');
     }
 }
-
-
 
 
 // Hacer la función disponible globalmente

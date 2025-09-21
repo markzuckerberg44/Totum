@@ -25,12 +25,12 @@
             </div>
             
             <ul class="py-2">
-            <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation">Inicio</a></li>
-            <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation" onclick="navigateTo('feature1')">Recetas</a></li>
-            <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation" onclick="navigateTo('feature2')">Nigga 1</a></li>
-            <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation" onclick="navigateTo('feature3')">Nigga 2</a></li>
+            <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation" onclick="event.preventDefault(); navigateTo('homepage')">Inicio</a></li>
+            <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation" onclick="event.preventDefault(); navigateTo('feature1')">Recetas</a></li>
+            <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation" onclick="event.preventDefault(); navigateTo('feature2')">noticias</a></li>
+            <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation" onclick="event.preventDefault(); navigateTo('feature3')">Nigga 2</a></li>
             <li>
-                <a href="#" class="block px-4 py-3 text-red-400 hover:bg-red-900 hover:bg-opacity-20 active:bg-red-900 active:bg-opacity-30 transition-colors font-medium touch-manipulation" onclick="navigateTo('welcome')">
+                <a href="#" class="block px-4 py-3 text-red-400 hover:bg-red-900 hover:bg-opacity-20 active:bg-red-900 active:bg-opacity-30 transition-colors font-medium touch-manipulation" onclick="event.preventDefault(); navigateTo('welcome')">
                     Salir
                 </a>
             </li>
@@ -40,7 +40,7 @@
 
     <div class="flex justify-center items-center py-8">
         <div class="w-[90%] rounded overflow-hidden shadow-lg">
-            <div class="px-6 py-4 bg-[#1E1E1E] border-2 border-[#444444]">
+            <div id="clima-card" class="px-6 py-4 bg-[#1E1E1E] border-2 border-[#444444]">
 
                 <div class="flex items-center justify-between mb-4">
                     <div class="font-bold text-xl mb-10 mt-2" id="clima-temperatura"></div>
