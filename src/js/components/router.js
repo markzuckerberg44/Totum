@@ -57,6 +57,23 @@ class Router {
           console.log('❌ Función cargarYMostrarClima no encontrada');
         }
       }
+        if (path === 'feature2') {
+          if (window.AppUtils && window.AppUtils.initHamburgerMenu) {
+            window.AppUtils.initHamburgerMenu();
+          }
+          if (typeof window.cargarYMostrarNoticias === 'function') {
+            window.cargarYMostrarNoticias();
+          }
+        }
+        if (path === 'feature3') {
+          if (window.AppUtils && window.AppUtils.initHamburgerMenu) {
+            window.AppUtils.initHamburgerMenu();
+          }
+          if (window.NasaAPI && typeof window.NasaAPI.loadApodSummary === 'function') {
+            window.NasaAPI.loadApodSummary();
+          }
+        }
+              
     }, 200);
   }
 

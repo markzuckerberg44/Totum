@@ -1,151 +1,98 @@
-<div class="min-h-screen bg-gray-50">
-  <!-- Header -->
-  <header class="bg-white shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-6">
-        <div class="flex items-center space-x-4">
-          <button onclick="navigateTo('homepage')" class="text-gray-500 hover:text-gray-700">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-          <h1 class="text-2xl font-bold text-gray-900">Mensajes</h1>
-        </div>
-        <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">
-          Nuevo mensaje
-        </button>
-      </div>
-    </div>
+<div class="min-h-screen bg-[#12191D] text-white">
+  <!-- Header con navegación -->
+  <header class="bg-[#12191D] p-6 flex items-center relative">
+      <img src="./assets/totumlogo.png" class="w-28 h-11 cursor-pointer" alt="Totum" onclick="navigateTo('welcome')"/>
+      
+      <button id="menuBtn" type="button"
+          class="ml-auto flex flex-col gap-1.5 cursor-pointer relative z-50"
+          aria-controls="menu" aria-expanded="false">
+          <span class="block h-0.5 w-7 bg-white transition-all duration-300"></span>
+          <span class="block h-0.5 w-7 bg-white transition-all duration-300"></span>
+          <span class="block h-0.5 w-7 bg-white transition-all duration-300"></span>
+      </button>
+
+      <nav id="menu" class="hidden absolute top-full right-6 mt-2 w-80 bg-[#2C3E50] rounded-lg shadow-xl border border-gray-600 z-40 overflow-hidden transform transition-all duration-200 ease-out">
+          <div class="bg-[#34495E] px-4 py-3 border-b border-gray-600">
+              <div class="flex items-center space-x-3">
+                  <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                      <span class="text-white text-sm font-medium">U</span>
+                  </div>
+                  <div>
+                      <p class="text-white text-sm font-medium">Bienvenido</p>
+                      <p class="text-gray-300 text-xs">Explora el universo</p>
+                  </div>
+              </div>
+          </div>
+          
+          <ul class="py-2">
+              <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation" onclick="event.preventDefault(); navigateTo('homepage')">Inicio</a></li>
+              <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation" onclick="event.preventDefault(); navigateTo('feature1')">Recetas</a></li>
+              <li><a href="#" class="block px-4 py-3 text-white hover:bg-[#34495E] active:bg-[#2C3E50] transition-colors border-b border-gray-600 last:border-b-0 touch-manipulation" onclick="event.preventDefault(); navigateTo('feature2')">Clima</a></li>
+              <li><a href="#" class="block px-4 py-3 text-blue-400 hover:bg-blue-900 hover:bg-opacity-20 active:bg-blue-900 active:bg-opacity-30 transition-colors font-medium touch-manipulation" onclick="event.preventDefault(); navigateTo('feature3')">Astronomía</a></li>
+              <li>
+                  <a href="#" class="block px-4 py-3 text-red-400 hover:bg-red-900 hover:bg-opacity-20 active:bg-red-900 active:bg-opacity-30 transition-colors font-medium touch-manipulation" onclick="navigateTo('welcome')">
+                      Salir
+                  </a>
+              </li>
+          </ul>
+      </nav>
   </header>
 
   <!-- Contenido principal -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      
-      <!-- Lista de conversaciones -->
-      <div class="lg:col-span-1">
-        <div class="bg-white rounded-lg shadow">
-          <div class="px-6 py-4 border-b border-gray-200">
-            <h3 class="text-lg font-medium text-gray-900">Conversaciones</h3>
-          </div>
-          <div class="divide-y divide-gray-200">
-            
-            <!-- Conversación 1 -->
-            <div class="p-6 hover:bg-gray-50 cursor-pointer">
-              <div class="flex items-center space-x-4">
-                <div class="flex-shrink-0">
-                  <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                    <span class="text-white font-medium">JD</span>
-                  </div>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <p class="text-sm font-medium text-gray-900 truncate">John Doe</p>
-                  <p class="text-sm text-gray-500 truncate">Hola, ¿cómo estás?</p>
-                </div>
-                <div class="flex-shrink-0 text-sm text-gray-500">
-                  2m
-                </div>
-              </div>
-            </div>
-
-            <!-- Conversación 2 -->
-            <div class="p-6 hover:bg-gray-50 cursor-pointer">
-              <div class="flex items-center space-x-4">
-                <div class="flex-shrink-0">
-                  <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                    <span class="text-white font-medium">MJ</span>
-                  </div>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <p class="text-sm font-medium text-gray-900 truncate">María José</p>
-                  <p class="text-sm text-gray-500 truncate">Perfecto, nos vemos mañana</p>
-                </div>
-                <div class="flex-shrink-0 text-sm text-gray-500">
-                  1h
-                </div>
-              </div>
-            </div>
-
-            <!-- Conversación 3 -->
-            <div class="p-6 hover:bg-gray-50 cursor-pointer">
-              <div class="flex items-center space-x-4">
-                <div class="flex-shrink-0">
-                  <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
-                    <span class="text-white font-medium">AP</span>
-                  </div>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <p class="text-sm font-medium text-gray-900 truncate">Ana Pérez</p>
-                  <p class="text-sm text-gray-500 truncate">Gracias por la información</p>
-                </div>
-                <div class="flex-shrink-0 text-sm text-gray-500">
-                  2h
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <main class="container mx-auto px-6 py-8">
+      <!-- Título de la sección -->
+      <div class="text-center mb-8">
+          <h1 class="text-4xl font-bold text-white mb-4">Astronomía del Día</h1>
+          <p class="text-gray-300 text-lg">Descubre las maravillas del universo con la imagen astronómica del día de la NASA 👨‍🚀</p>
       </div>
 
-      <!-- Chat activo -->
-      <div class="lg:col-span-2">
-        <div class="bg-white rounded-lg shadow h-96 flex flex-col">
-          
-          <!-- Header del chat -->
-          <div class="px-6 py-4 border-b border-gray-200">
-            <div class="flex items-center space-x-4">
-              <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                <span class="text-white font-medium">JD</span>
-              </div>
-              <div>
-                <h4 class="text-lg font-medium text-gray-900">John Doe</h4>
-                <p class="text-sm text-gray-500">En línea</p>
-              </div>
-            </div>
-          </div>
+      <!-- Resumen de APOD (para vista rápida) -->
+      <div id="apod-summary" class="mb-8"></div>
 
-          <!-- Mensajes -->
-          <div class="flex-1 p-6 overflow-y-auto space-y-4">
-            <!-- Mensaje recibido -->
-            <div class="flex">
-              <div class="flex-1">
-                <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
-                  <p class="text-sm text-gray-900">Hola, ¿cómo estás?</p>
-                </div>
-                <p class="text-xs text-gray-500 mt-1">10:30 AM</p>
-              </div>
-            </div>
-
-            <!-- Mensaje enviado -->
-            <div class="flex justify-end">
-              <div class="flex-1 flex justify-end">
-                <div class="bg-blue-600 rounded-lg p-3 max-w-xs">
-                  <p class="text-sm text-white">¡Hola! Todo bien por aquí, ¿y tú?</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex justify-end">
-              <p class="text-xs text-gray-500">10:32 AM</p>
-            </div>
-          </div>
-
-          <!-- Input de mensaje -->
-          <div class="px-6 py-4 border-t border-gray-200">
-            <div class="flex space-x-4">
-              <input 
-                type="text" 
-                placeholder="Escribe un mensaje..." 
-                class="flex-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              >
-              <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
-                </svg>
+      <!-- Vista detallada de APOD -->
+      <div id="apod-detail" class="hidden">
+          <!-- Controles -->
+            <div class="flex justify-start items-center mb-6">
+                <button onclick="hideApodDetail()" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors cursor-pointer">
+                  ← Volver a la vista rápida
               </button>
-            </div>
           </div>
-        </div>
+
+          <!-- Contenido de APOD -->
+          <div class="bg-[#1E1E1E] rounded-lg p-6 border border-gray-600">
+              <!-- Loading -->
+              <div id="apod-loading" class="hidden flex justify-center items-center py-8">
+                  <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+              </div>
+
+              <!-- Error -->
+              <div id="apod-error" class="hidden text-red-500 text-center py-4">
+                  Error al cargar la imagen
+              </div>
+
+              <!-- Imagen -->
+              <img id="apod-image" class="w-full h-auto rounded-lg mb-6 object-contain" style="max-width: 900px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" alt="Imagen APOD">
+
+              <!-- Título -->
+              <h2 id="apod-title" class="text-2xl font-bold text-white mb-4"></h2>
+
+              <!-- Explicación -->
+              <p id="apod-explanation" class="text-gray-300 leading-relaxed"></p>
+          </div>
       </div>
-    </div>
+
+      <!-- Información adicional -->
+      <div class="mt-12 text-center">
+          <div class="bg-[#1E1E1E] rounded-lg p-6 border border-gray-600">
+              <h3 class="text-xl font-semibold text-white mb-4">Sobre la Imagen Astronómica del Día 🚀</h3>
+              <p class="text-gray-300 mb-4">
+                  La NASA publica diariamente una imagen o video del universo, junto con una breve explicación escrita por un astrónomo profesional.
+              </p>
+              <p class="text-sm text-gray-400">
+                  Datos proporcionados por la NASA API - Astronomy Picture of the Day
+              </p>
+          </div>
+      </div>
   </main>
-</div>
+ </div>
+
