@@ -56,24 +56,40 @@ class Router {
         } else {
           console.log('❌ Función cargarYMostrarClima no encontrada');
         }
+        
+        // ✨ EJECUTAR LA FUNCIÓN DE LA PRIMERA NOTICIA
+        if (typeof window.cargarPrimeraNoticia === 'function') {
+          console.log('📰 Ejecutando función de primera noticia...');
+          window.cargarPrimeraNoticia();
+        } else {
+          console.log('❌ Función cargarPrimeraNoticia no encontrada');
+        }
       }
-        if (path === 'feature2') {
-          if (window.AppUtils && window.AppUtils.initHamburgerMenu) {
-            window.AppUtils.initHamburgerMenu();
-          }
-          if (typeof window.cargarYMostrarNoticias === 'function') {
-            window.cargarYMostrarNoticias();
-          }
+      
+      if (path === 'feature2') {
+        if (window.AppUtils && window.AppUtils.initHamburgerMenu) {
+          window.AppUtils.initHamburgerMenu();
         }
-        if (path === 'feature3') {
-          if (window.AppUtils && window.AppUtils.initHamburgerMenu) {
-            window.AppUtils.initHamburgerMenu();
-          }
-          if (window.NasaAPI && typeof window.NasaAPI.loadApodSummary === 'function') {
-            window.NasaAPI.loadApodSummary();
-          }
+        if (typeof window.cargarYMostrarNoticias === 'function') {
+          window.cargarYMostrarNoticias();
         }
-              
+      }
+      
+      if (path === 'feature3') {
+        if (window.AppUtils && window.AppUtils.initHamburgerMenu) {
+          window.AppUtils.initHamburgerMenu();
+        }
+        if (window.NasaAPI && typeof window.NasaAPI.loadApodSummary === 'function') {
+          window.NasaAPI.loadApodSummary();
+        }
+      }
+      
+      if (path === 'factsPage') {
+        if (typeof window.mostrarDatosLista === 'function') {
+          window.mostrarDatosLista();
+        }
+      }
+            
     }, 200);
   }
 

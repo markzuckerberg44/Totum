@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return isValid;
     },
 
-    // Inicializar menú hamburguesa
+    // Inicializar menú hamburguesa - MOBILE FIRST
     initHamburgerMenu: function() {
       const btn = document.getElementById('menuBtn');
       const menu = document.getElementById('menu');
@@ -48,9 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.replaceWith(btn.cloneNode(true));
         const newBtn = document.getElementById('menuBtn');
         
-        // Función para cerrar el menú
+        // Función para cerrar el menú - MOBILE FIRST
         const closeMenu = () => {
           menu.classList.add('hidden');
+          menu.classList.remove('active');
           newBtn.setAttribute('aria-expanded', 'false');
           
           // Resetear animación del botón hamburguesa
@@ -60,9 +61,10 @@ document.addEventListener('DOMContentLoaded', function() {
           spans[2].style.transform = 'none';
         };
         
-        // Función para abrir el menú
+        // Función para abrir el menú - MOBILE FIRST
         const openMenu = () => {
           menu.classList.remove('hidden');
+          menu.classList.add('active');
           newBtn.setAttribute('aria-expanded', 'true');
           
           // Animación del botón hamburguesa a X
@@ -82,6 +84,14 @@ document.addEventListener('DOMContentLoaded', function() {
           } else {
             closeMenu();
           }
+        });
+        
+        // Cerrar menú al hacer clic en enlaces de navegación
+        const navLinks = menu.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            closeMenu();
+          });
         });
         
         // Cerrar menú al hacer clic fuera (para móviles)
@@ -112,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
         
-        console.log('Menú hamburguesa inicializado con cierre automático');
+        console.log('Menú hamburguesa Mobile First inicializado correctamente');
       } else {
         console.log('Elementos del menú no encontrados');
       }
@@ -139,6 +149,12 @@ document.addEventListener('DOMContentLoaded', function() {
   if (appConfig.theme === 'dark') {
     document.body.classList.add('dark');
   }
+
+  document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("facto")) {
+    mostrarDato();
+  }
+  });
 
   console.log(`${appConfig.name} v${appConfig.version} cargado correctamente`);
 });

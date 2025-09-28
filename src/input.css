@@ -1,8 +1,340 @@
 @import "tailwindcss";
 
-/* Estilos personalizados para TOTUM */
+/* ========================================
+   TOTUM APP - MOBILE FIRST DESIGN
+   ======================================== */
 
-/* Animaciones personalizadas */
+/* DISEÑO BASE MOBILE FIRST */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #12191D;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* CONTENEDOR PRINCIPAL - MOBILE */
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  padding: 0;
+}
+
+/* HEADER - MOBILE FIRST */
+.header {
+  background-color: #12191D;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 1px solid #2C3E50;
+}
+
+.logo {
+  width: 80px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* BOTÓN HAMBURGUESA - MOBILE */
+.menu-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 50;
+  transition: transform 0.2s ease;
+}
+
+.menu-btn span {
+  display: block;
+  height: 2px;
+  width: 24px;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+}
+
+/* MENÚ NAVEGACIÓN - MOBILE */
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  right: 16px;
+  width: 280px;
+  background-color: #2C3E50;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid #34495E;
+  z-index: 40;
+  overflow: hidden;
+  transform: translateY(-10px) scale(0.95);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+.nav-menu.active {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-header {
+  background-color: #34495E;
+  padding: 16px;
+  border-bottom: 1px solid #2C3E50;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #3498db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.nav-links li a {
+  display: block;
+  padding: 12px 16px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links li a:hover {
+  background-color: #34495E;
+}
+
+.nav-links li:last-child a {
+  color: #e74c3c;
+  border-bottom: none;
+}
+
+.nav-links li:last-child a:hover {
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* CARDS CONTENEDOR - MOBILE */
+.cards-container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* CARD BASE - MOBILE */
+.card {
+  width: 100%;
+  background-color: #1E1E1E;
+  border: 2px solid #444444;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* CARD CLIMA - MOBILE */
+.weather-card {
+  background: linear-gradient(135deg, #1E1E1E 0%, #2C3E50 100%);
+}
+
+.weather-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.weather-temp {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.weather-icon {
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.weather-info p {
+  margin: 4px 0;
+  opacity: 0.8;
+}
+
+/* CARD FACTS - MOBILE */
+.facts-card {
+  background: #e6c73e;
+}
+
+/* CARD NOTICIAS - MOBILE */
+.news-card {
+  background: #38d1bd;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.news-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.news-icon {
+  font-size: 28px;
+}
+
+.news-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000000;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-description {
+  color: #242424;
+  opacity: 0.8;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  font-size: 13px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-source {
+  color: #000000;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.nasa-card {
+  background: #FF9590;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.facts-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #000000;
+}
+
+.facts-text {
+  color: #242424;
+  opacity: 0.8;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.facts-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn {
+  background-color: #303030;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* UTILIDADES */
+.hidden {
+  display: none !important;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #444444;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ANIMACIONES */
 @keyframes fadeIn {
   from { 
     opacity: 0; 
@@ -18,26 +350,154 @@
   animation: fadeIn 0.5s ease-out;
 }
 
-/* Transiciones suaves */
-.smooth-transition {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* ========================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+   ======================================== */
+
+/* TABLET - 768px and up */
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 16px 24px;
+  }
+  
+  .logo {
+    width: 100px;
+    height: 40px;
+  }
+  
+  .nav-menu {
+    width: 320px;
+    right: 24px;
+  }
+  
+  .cards-container {
+    padding: 24px;
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 24px;
+  }
+  
+  .weather-temp {
+    font-size: 32px;
+  }
+  
+  .weather-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .facts-buttons {
+    flex-direction: row;
+    gap: 12px;
+  }
+  
+  .btn {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 15px;
+  }
 }
 
-/* Estilos para scroll personalizado */
-.custom-scroll::-webkit-scrollbar {
-  width: 6px;
+/* DESKTOP SMALL - 1024px and up */
+@media screen and (min-width: 1024px) {
+  .header {
+    padding: 20px 32px;
+  }
+  
+  .logo {
+    width: 112px;
+    height: 44px;
+  }
+  
+  .cards-container {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    padding: 28px;
+  }
+  
+  .weather-temp {
+    font-size: 36px;
+  }
+  
+  .weather-icon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .facts-title {
+    font-size: 20px;
+  }
+  
+  .facts-text {
+    font-size: 15px;
+  }
+  
+  .news-title {
+    font-size: 18px;
+  }
+  
+  .news-description {
+    font-size: 14px;
+  }
 }
 
-.custom-scroll::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 9999px;
+/* DESKTOP LARGE - 1440px and up */
+@media screen and (min-width: 1440px) {
+  .cards-container {
+    padding: 40px;
+    gap: 32px;
+  }
+  
+  .card {
+    padding: 32px;
+  }
+  
+  .weather-temp {
+    font-size: 40px;
+  }
+  
+  .weather-icon {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .facts-title {
+    font-size: 22px;
+  }
+  
+  .facts-text {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  
+  .btn {
+    padding: 14px 24px;
+    font-size: 16px;
+  }
 }
 
-.custom-scroll::-webkit-scrollbar-thumb {
-  background: #94a3b8;
-  border-radius: 9999px;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+/* DESKTOP XL - 1920px and up */
+@media screen and (min-width: 1920px) {
+  .cards-container {
+    max-width: 1400px;
+    gap: 40px;
+  }
+  
+  .weather-temp {
+    font-size: 44px;
+  }
+  
+  .weather-icon {
+    width: 100px;
+    height: 100px;
+  }
 }
