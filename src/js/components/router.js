@@ -43,21 +43,26 @@ class Router {
   initPageSpecificFeatures(path) {
     // Esperar un poco para que el DOM se actualice
     setTimeout(() => {
-      if (path === 'homepage') {
-        // Inicializar menú hamburguesa para la página homepage
-        if (window.AppUtils && window.AppUtils.initHamburgerMenu) {
-          window.AppUtils.initHamburgerMenu();
-        }
-        
-        // ✨ EJECUTAR LA FUNCIÓN DEL CLIMA
-        if (typeof window.cargarYMostrarClima === 'function') {
-          console.log('🌤️ Ejecutando función del clima...');
-          window.cargarYMostrarClima();
-        } else {
-          console.log('❌ Función cargarYMostrarClima no encontrada');
-        }
-      }
-    }, 200);
+  if (path === 'homepage') {
+    
+    if (window.AppUtils && window.AppUtils.initHamburgerMenu) {
+      window.AppUtils.initHamburgerMenu();
+    }
+    
+   
+    if (typeof window.cargarYMostrarClima === 'function') {
+      console.log('🌤️ Ejecutando función del clima...');
+      window.cargarYMostrarClima();
+    } else {
+      console.log('❌ Función cargarYMostrarClima no encontrada');
+    }
+  }
+  if (path === 'factsPage') {
+    if (typeof window.mostrarDatosLista === 'function') {
+      window.mostrarDatosLista();
+    }
+  }
+}, 200);
   }
 
   // Inicializar el router
@@ -68,6 +73,7 @@ class Router {
     this.addRoute('feature1', './pages/features/feature1.html');
     this.addRoute('feature2', './pages/features/feature2.html');
     this.addRoute('feature3', './pages/features/feature3.html');
+    this.addRoute('factsPage', './pages/factsPage.html');
 
     // Manejar el botón atrás del navegador
     window.addEventListener('popstate', (event) => {

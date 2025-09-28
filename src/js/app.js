@@ -139,6 +139,11 @@ document.addEventListener('DOMContentLoaded', function() {
   if (appConfig.theme === 'dark') {
     document.body.classList.add('dark');
   }
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("facto")) {
+    mostrarDato();
+  }
+});
 
   console.log(`${appConfig.name} v${appConfig.version} cargado correctamente`);
 });
