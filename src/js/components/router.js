@@ -65,6 +65,14 @@ class Router {
             window.cargarYMostrarNoticias();
           }
         }
+        if (path === 'feature3') {
+          if (window.AppUtils && window.AppUtils.initHamburgerMenu) {
+            window.AppUtils.initHamburgerMenu();
+          }
+          if (window.NasaAPI && typeof window.NasaAPI.loadApodSummary === 'function') {
+            window.NasaAPI.loadApodSummary();
+          }
+        }
               
     }, 200);
   }
