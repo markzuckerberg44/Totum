@@ -101,6 +101,7 @@ class Router {
     this.addRoute('feature1', './pages/features/feature1.html');
     this.addRoute('feature2', './pages/features/feature2.html');
     this.addRoute('feature3', './pages/features/feature3.html');
+    this.addRoute('feature4', './pages/features/feature4.html');
 
     // Manejar el botón atrás del navegador
     window.addEventListener('popstate', (event) => {

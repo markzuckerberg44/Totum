@@ -8,11 +8,6 @@ async function obtenerDatoRandom() {
   return await res.json();
 }
 
-async function obtenerDatoDelDia() {
-  const res = await fetch(API_CONFIG_FACTS.today);
-  return await res.json();
-}
-
 async function loadFact() {
   try {
     const response = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random");
@@ -56,20 +51,20 @@ function renderizarFacts(datos) {
   });
 }
 
-function ordenarFacts() {
-  const datosOrdenados = [...window.factsData].sort((a, b) => 
-    a.text.localeCompare(b.text)
-  );
-  renderizarFacts(datosOrdenados);
-}
-
 async function mostrarSoloDatoDelDia() {
-  const fact = await obtenerDatoDelDia();
-  renderizarFacts([fact]);
+  const contenedor = document.getElementById("facto");
+  const lista = document.getElementById("lista-facts");
+  // Reset
+  lista.innerHTML = "";
+  contenedor.textContent = "Cargando fact del día...";
+  try {
+    const response = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/today");
+    const fact = await response.json();
+    contenedor.textContent = fact.text;
+  } catch (error) {
+    contenedor.textContent = "Error cargando el fact del día.";
+  }
 }
-
-
 window.mostrarDato = mostrarDato;
 window.mostrarDatosLista = mostrarDatosLista;
-window.ordenarFacts = ordenarFacts;
 window.mostrarSoloDatoDelDia = mostrarSoloDatoDelDia;
