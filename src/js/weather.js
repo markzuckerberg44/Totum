@@ -39,12 +39,30 @@ async function obtenerClima() {
             stack: error.stack
         });
         
-        // Mostrar error en la UI
+        // Mostrar error personalizado en la UI según el tipo de error
         const elementoTemp = document.getElementById('clima-temperatura');
         const elementoDesc = document.getElementById('clima-descripcion');
         
-        if (elementoTemp) elementoTemp.textContent = 'Error';
-        if (elementoDesc) elementoDesc.textContent = `Error: ${error.message}`;
+        if (elementoTemp) elementoTemp.textContent = '--°';
+        
+        if (elementoDesc) {
+            // Detectar diferentes tipos de errores y mostrar mensajes apropiados
+            if (error.message.includes('403')) {
+                elementoDesc.textContent = 'Límite de requests alcanzado';
+            } else if (error.message.includes('401')) {
+                elementoDesc.textContent = 'API key inválida';
+            } else if (error.message.includes('429')) {
+                elementoDesc.textContent = 'Demasiadas solicitudes, espera un momento';
+            } else if (error.message.includes('500') || error.message.includes('502') || error.message.includes('503')) {
+                elementoDesc.textContent = 'Servicio temporalmente no disponible';
+            } else if (error.name === 'AbortError' || error.message.includes('timeout')) {
+                elementoDesc.textContent = 'Conexión lenta, reintenta más tarde';
+            } else if (error.message.includes('NetworkError') || error.message.includes('fetch')) {
+                elementoDesc.textContent = 'Sin conexión a internet';
+            } else {
+                elementoDesc.textContent = 'Servicio de clima no disponible';
+            }
+        }
         
         return null;
     }
@@ -123,9 +141,12 @@ async function cargarYMostrarClima() {
     } else {
         console.log('❌ Error: No se pudieron obtener datos válidos del clima');
         // Mostrar mensaje de error en la UI
+        const elementoTemp = document.getElementById('clima-temperatura');
         const elementoDesc = document.getElementById('clima-descripcion');
+        
+        if (elementoTemp) elementoTemp.textContent = '--°';
         if (elementoDesc) {
-            elementoDesc.textContent = 'Servicio de clima no disponible';
+            elementoDesc.textContent = 'Datos de clima no disponibles';
         }
     }
 }

@@ -46,7 +46,19 @@ function cargarYMostrarNoticias() {
       console.error("Error al obtener noticias:", error);
       const contenedor = document.getElementById("contenedor");
       if (contenedor) {
-        contenedor.innerHTML = `<div class="text-red-400 p-4">Error al cargar noticias: ${error.message}</div>`;
+        let mensajeError;
+        if (error.message.includes('403')) {
+          mensajeError = 'Límite de requests de noticias alcanzado. Intenta más tarde.';
+        } else if (error.message.includes('401')) {
+          mensajeError = 'Error de autenticación con el servicio de noticias.';
+        } else if (error.message.includes('429')) {
+          mensajeError = 'Demasiadas solicitudes. Espera un momento.';
+        } else if (error.message.includes('500') || error.message.includes('502') || error.message.includes('503')) {
+          mensajeError = 'Servicio de noticias temporalmente no disponible.';
+        } else {
+          mensajeError = 'No se pudieron cargar las noticias.';
+        }
+        contenedor.innerHTML = `<div class="text-red-400 p-4">${mensajeError}</div>`;
       }
     });
 }
@@ -99,7 +111,23 @@ function cargarPrimeraNoticia() {
       const fuente = document.getElementById("noticia-fuente");
       
       if (titulo) titulo.textContent = "Error al cargar noticia";
-      if (descripcion) descripcion.textContent = `Error: ${error.message}`;
+      
+      if (descripcion) {
+        let mensajeError;
+        if (error.message.includes('403')) {
+          mensajeError = 'Límite de requests alcanzado. Intenta más tarde.';
+        } else if (error.message.includes('401')) {
+          mensajeError = 'Error de autenticación del servicio.';
+        } else if (error.message.includes('429')) {
+          mensajeError = 'Demasiadas solicitudes, espera un momento.';
+        } else if (error.message.includes('500') || error.message.includes('502') || error.message.includes('503')) {
+          mensajeError = 'Servicio temporalmente no disponible.';
+        } else {
+          mensajeError = 'No se pudo conectar con el servicio.';
+        }
+        descripcion.textContent = mensajeError;
+      }
+      
       if (fuente) fuente.textContent = "Servicio no disponible";
     });
 }
