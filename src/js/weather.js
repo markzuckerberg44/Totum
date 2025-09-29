@@ -9,15 +9,44 @@ const lon = -71.25014;
 
 async function obtenerClima() {
     try {
-        const response = await fetch(
-            `${API_CONFIG_WEATHER.url}/weather?lat=${lat}&lon=${lon}&appid=${API_CONFIG_WEATHER.key}&units=metric&lang=es`
-        );
+        console.log('🌤️ Iniciando request del clima...');
+        const url = `${API_CONFIG_WEATHER.url}/weather?lat=${lat}&lon=${lon}&appid=${API_CONFIG_WEATHER.key}&units=metric&lang=es`;
+        console.log('URL del clima:', url);
+        
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+            // Agregar timeout para evitar que se cuelgue
+            signal: AbortSignal.timeout(10000) // 10 segundos
+        });
+
+        console.log('Response status:', response.status);
+        console.log('Response headers:', [...response.headers.entries()]);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
+        }
 
         const data = await response.json();
-        console.log('Datos del clima:', data);
+        console.log('✅ Datos del clima recibidos:', data);
         return data;
     } catch (error) {
-        console.error('Error al obtener el clima:', error);
+        console.error('❌ Error detallado al obtener el clima:', {
+            message: error.message,
+            name: error.name,
+            stack: error.stack
+        });
+        
+        // Mostrar error en la UI
+        const elementoTemp = document.getElementById('clima-temperatura');
+        const elementoDesc = document.getElementById('clima-descripcion');
+        
+        if (elementoTemp) elementoTemp.textContent = 'Error';
+        if (elementoDesc) elementoDesc.textContent = `Error: ${error.message}`;
+        
+        return null;
     }
 }
 
@@ -71,15 +100,33 @@ function actualizarCartaClima(data) {
 
 }
 async function cargarYMostrarClima() {
-    console.log('Iniciando carga del clima...');
+    console.log('🌤️ Iniciando carga del clima...');
+    
+    // Verificar que los elementos DOM existan antes de hacer el request
+    const elementos = ['clima-temperatura', 'clima-descripcion', 'clima-ubicacion', 'clima-icon'];
+    const elementosExisten = elementos.every(id => {
+        const elemento = document.getElementById(id);
+        console.log(`Elemento ${id}:`, elemento ? '✅ Encontrado' : '❌ No encontrado');
+        return elemento !== null;
+    });
+    
+    if (!elementosExisten) {
+        console.log('❌ Algunos elementos del clima no están disponibles aún');
+        return;
+    }
 
     const climaData = await obtenerClima();
 
-    if (climaData) {
-        console.log('Datos recibidos, actualizando carta...');
+    if (climaData && climaData.main && climaData.weather) {
+        console.log('✅ Datos válidos recibidos, actualizando carta...');
         actualizarCartaClima(climaData);
     } else {
-        console.log('Error: No se pudieron obtener datos del clima');
+        console.log('❌ Error: No se pudieron obtener datos válidos del clima');
+        // Mostrar mensaje de error en la UI
+        const elementoDesc = document.getElementById('clima-descripcion');
+        if (elementoDesc) {
+            elementoDesc.textContent = 'Servicio de clima no disponible';
+        }
     }
 }
 
